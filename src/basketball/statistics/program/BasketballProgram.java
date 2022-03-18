@@ -57,7 +57,7 @@ public class BasketballProgram extends BasketballPlayer
                 boolean flag = false;
                 String answer = inputStringNotEmpty("Name the player you would like to edit:");
                 
-                for(String c: choices)
+                for(String c: choices)    
                     if(c.equals(answer))
                         flag = true;
                 
@@ -137,34 +137,36 @@ public class BasketballProgram extends BasketballPlayer
             if (run)
             {
                 
-            String[] player = new String[8];
-            String[] firstLine = scan.nextLine().split(", ");
+                String[] player = new String[8];
+                String[] firstLine = scan.nextLine().split(", ");
             
-            for(int i = 0; i < firstLine.length; i++)
-                player[i] = firstLine[i];
+                for(int i = 0; i < firstLine.length; i++)
+                    player[i] = firstLine[i];
             
-            int lineCount = 2;
+                int lineCount = 2;
                 
-            while (!scan.hasNext("======================================="))
-            {                
-                String[] temp = scan.nextLine().split(" ");
-                player[lineCount] = temp[0];
-                lineCount++;
+                while (!scan.hasNext("======================================="))
+                {                
+                    String[] temp = scan.nextLine().split(" ");
+                    player[lineCount] = temp[0];
+                    lineCount++;
+                }
+            
+                String name = player[0];
+                POSITION position = POSITION.valueOf(player[1]);
+                double points = Double.valueOf(player[2]);
+                double rebounds = Double.valueOf(player[3]);
+                double assists = Double.valueOf(player[4]);
+                double steals = Double.valueOf(player[5]);
+                double blocks = Double.valueOf(player[6]);
+                double turnovers = Double.valueOf(player[7]);
+            
+                edit.addPlayer(new BasketballPlayer(name, position, points, rebounds, assists, steals, blocks, turnovers));
+            
             }
-            
-            String name = player[0];
-            POSITION position = POSITION.valueOf(player[1]);
-            double points = Double.valueOf(player[2]);
-            double rebounds = Double.valueOf(player[3]);
-            double assists = Double.valueOf(player[4]);
-            double steals = Double.valueOf(player[5]);
-            double blocks = Double.valueOf(player[6]);
-            double turnovers = Double.valueOf(player[7]);
-            
-            edit.addPlayer(new BasketballPlayer(name, position, points, rebounds, assists, steals, blocks, turnovers));
-            
-            }
-        }     
+        }  
+        
+        scan.close();
         
         return edit;
     }
@@ -184,8 +186,7 @@ public class BasketballProgram extends BasketballPlayer
                 editFile();
             else
                 System.out.println("That was not one of the choices. Try again.");    
-            
-                
+                            
             done = yesOrNo("Are you ready to exit the database?");
         
         }   

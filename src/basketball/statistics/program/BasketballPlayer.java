@@ -21,13 +21,13 @@ public class BasketballPlayer implements Comparable<BasketballPlayer>
     public BasketballPlayer() 
     {
         name = "Unknown Name";
-	position = null;
-	points = 0.0;
-	rebounds = 0.0;
-	assists = 0.0;
-	steals = 0.0;
-	blocks = 0.0;
-	turnovers = 0.0;
+	    position = null;
+	    points = 0.0;
+	    rebounds = 0.0;
+	    assists = 0.0;
+	    steals = 0.0;
+	    blocks = 0.0;
+	    turnovers = 0.0;
     }
     
     public BasketballPlayer(String n, POSITION pos, double poi, double r, double a, double s, double b, double t)
@@ -44,7 +44,7 @@ public class BasketballPlayer implements Comparable<BasketballPlayer>
     
     public void assignName(String n) 
     {
-	name = n;
+	    name = n;
     }
   
     public BasketballPlayer createPlayer(BasketballPlayer player)
@@ -84,12 +84,12 @@ public class BasketballPlayer implements Comparable<BasketballPlayer>
 	
     public void enterAllStats(double p, double r, double a, double s, double b, double t) 
     {
-	points = p;
-	rebounds = r;
-	assists = a;
-	steals = s;
-	blocks = b;
-	turnovers = t;
+	    points = p;
+	    rebounds = r;
+	    assists = a;
+	    steals = s;
+	    blocks = b;
+	    turnovers = t;
     }
     
     public static String inputStringNotEmpty(String prompt) 
@@ -111,23 +111,24 @@ public class BasketballPlayer implements Comparable<BasketballPlayer>
             else 
                 System.out.println("Try again.");
         }
+        
+        scan.close();
         return value;
     }
     
     public double inputValidation(String prompt) 
     {
-	double value = 0;
-	Scanner scan = new Scanner(System.in);
-	
+	    double value = 0;
+	    Scanner scan = new Scanner(System.in);
         System.out.println(prompt);
 	
         // making sure the input is a double.
-	while (!scan.hasNextDouble()) 
+    	while (!scan.hasNextDouble()) 
         {
-		scan.nextLine();
-		System.out.println("Input value must be a whole number.");
-		System.out.println(prompt);
-	}
+		    scan.nextLine();
+		    System.out.println("Input value must be a whole number.");
+		    System.out.println(prompt);
+	    }
 	
         value = scan.nextDouble();
 	
@@ -135,11 +136,13 @@ public class BasketballPlayer implements Comparable<BasketballPlayer>
 	
         while (value <= 0) 
         {
-		System.out.println("Input value must be greater than zero.");
-		System.out.println("Enter a decimal greater an zero.");
-		value = scan.nextDouble();
-	}
-	return value;
+		    System.out.println("Input value must be greater than zero.");
+		    System.out.println("Enter a decimal greater an zero.");
+		    value = scan.nextDouble();
+	    }
+
+	    scan.close();
+        return value;
     }
     
     public void playerStats() 
@@ -162,78 +165,80 @@ public class BasketballPlayer implements Comparable<BasketballPlayer>
             input = scan.nextLine();
         }
         
+        scan.close();
         POSITION p = POSITION.valueOf(input);
         position = p;
     }
     
     public void setStats() 
     {
-	Scanner scan = new Scanner(System.in);
-	boolean finish = false;
+	    Scanner scan = new Scanner(System.in);
+	    boolean finish = false;
         
-	while (!finish) 
-        {
-            System.out.println("====================================================================================================================");
-            System.out.println("What statistic did you want to enter for " + name + "? Enter 'choices' if unsure what to enter. Enter 'done' to finish.");
-            String input = scan.nextLine();
+	    while (!finish) 
+            {
+                System.out.println("====================================================================================================================");
+                System.out.println("What statistic did you want to enter for " + name + "? Enter 'choices' if unsure what to enter. Enter 'done' to finish.");
+                String input = scan.nextLine();
             
-            System.out.println("====================================================================================================================");
-            if (input.toLowerCase().equals("points")) 
-            {
-                points = inputValidation("What do you want to change " + name + "'s average points per game to?");
-                System.out.println("Success!");
+                System.out.println("====================================================================================================================");
+                if (input.toLowerCase().equals("points")) 
+                {
+                    points = inputValidation("What do you want to change " + name + "'s average points per game to?");
+                    System.out.println("Success!");
+                }
+
+                else if (input.toLowerCase().equals("rebounds")) 
+                {
+                    rebounds = inputValidation("What do you want to change " + name + "'s average rebounds per game to?");
+                    System.out.println("Success!");
+                }
+
+                else if (input.toLowerCase().equals("assists"))
+                {
+                    assists = inputValidation("What do you want to change " + name + "'s average assists per game to?");
+                    System.out.println("Success!");
+                }
+
+                else if (input.toLowerCase().equals("steals")) 
+                {
+                    steals = inputValidation("What do you want to change " + name + "'s average steals per game to?");
+                    System.out.println("Success!");
+                }
+
+                else if (input.toLowerCase().equals("blocks"))
+                {
+                    blocks = inputValidation("What do you want to change " + name + "'s average blocks per game to?");
+                    System.out.println("Success!");
+                }
+
+                else if (input.toLowerCase().equals("turnovers")) 
+                {
+                    turnovers = inputValidation("What do you want to change " + name + "'s average turnovers per game to?");
+                    System.out.println("Success!");
+                }
+
+                else if (input.toLowerCase().equals("choices"))
+                    System.out.println("You can enter points, rebounds, assists, steals, blocks, and turnovers for a player.");
+
+                else if (input.toLowerCase().equals("done"))
+                {
+                    finish = true;
+                    System.out.println();
+                }
+
+                else
+                    System.out.println("That is not a valid statistic. Please choose points, rebounds, assists, steals, blocks, or turnovers. Enter 'done' to be done.");
             }
-
-            else if (input.toLowerCase().equals("rebounds")) 
-            {
-                rebounds = inputValidation("What do you want to change " + name + "'s average rebounds per game to?");
-                System.out.println("Success!");
-            }
-
-            else if (input.toLowerCase().equals("assists"))
-            {
-                assists = inputValidation("What do you want to change " + name + "'s average assists per game to?");
-                System.out.println("Success!");
-            }
-
-            else if (input.toLowerCase().equals("steals")) 
-            {
-                steals = inputValidation("What do you want to change " + name + "'s average steals per game to?");
-                System.out.println("Success!");
-            }
-
-            else if (input.toLowerCase().equals("blocks"))
-            {
-                blocks = inputValidation("What do you want to change " + name + "'s average blocks per game to?");
-                System.out.println("Success!");
-            }
-
-            else if (input.toLowerCase().equals("turnovers")) 
-            {
-                turnovers = inputValidation("What do you want to change " + name + "'s average turnovers per game to?");
-                System.out.println("Success!");
-            }
-
-            else if (input.toLowerCase().equals("choices"))
-                System.out.println("You can enter points, rebounds, assists, steals, blocks, and turnovers for a player.");
-
-            else if (input.toLowerCase().equals("done"))
-            {
-                finish = true;
-                System.out.println();
-            }
-
-            else
-                System.out.println("That is not a valid statistic. Please choose points, rebounds, assists, steals, blocks, or turnovers. Enter 'done' to be done.");
-        }
+        scan.close();
         System.out.println("====================================================================================================================");
     }
     
     public static boolean yesOrNo(String prompt) 
     {
-	System.out.println("====================================================================================================================");
+	    System.out.println("====================================================================================================================");
         boolean flag = false;
-	boolean answer = false;
+	    boolean answer = false;
 	
         while (!flag)
         {
@@ -256,7 +261,7 @@ public class BasketballPlayer implements Comparable<BasketballPlayer>
                 System.out.println("Try again.");
                 System.out.println("====================================================================================================================");
             }
-	}
+	    }
 	return answer;
     }
 }
