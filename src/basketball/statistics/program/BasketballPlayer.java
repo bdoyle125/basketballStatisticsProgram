@@ -92,6 +92,7 @@ public class BasketballPlayer implements Comparable<BasketballPlayer>
 	    turnovers = t;
     }
     
+    // Not working right now
     public static String inputStringNotEmpty(String prompt) 
     {
         Scanner scan = new Scanner(System.in);	
@@ -102,14 +103,21 @@ public class BasketballPlayer implements Comparable<BasketballPlayer>
         while (!flag) 
         {
             System.out.println(prompt);
-            value = scan.nextLine();
             
             // Checking to see if the user entered something.
-            if (value.length() > 0) 
-                flag = true;
-
-            else 
+            if(!scan.hasNext("[A-Za-z]*"))
+            {
+                value = scan.next();
                 System.out.println("Try again.");
+            }
+
+            else
+            {
+                value = scan.nextLine();
+                flag = true;
+            } 
+                
+
         }
         
         scan.close();

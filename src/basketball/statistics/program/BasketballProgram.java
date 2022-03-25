@@ -9,11 +9,11 @@ import java.util.Scanner;
 public class BasketballProgram extends BasketballPlayer
 {
     
-    /*
+    
     public static void editFile() throws FileNotFoundException
     {
-        File directory = new File("/users/brycedoyle/NetBeansProjects/Basketball Statistics Program");
-        String fileName = inputStringNotEmpty("Type in the name of the file you would like to edit:");
+        File directory = new File("/home/user/");
+        String fileName = ("Type in the name of the file you would like to edit:");
         String[] fileList = directory.list();
         boolean found = false;
         
@@ -78,7 +78,6 @@ public class BasketballProgram extends BasketballPlayer
             
         }
     }
-    */
 
     public static void newFile() throws FileNotFoundException 
     {
@@ -184,8 +183,8 @@ public class BasketballProgram extends BasketballPlayer
         
             if (answer.equals("create"))
                 newFile();
-            // else if (answer.equals("edit"))
-            //    editFile();
+            else if (answer.equals("edit"))
+                editFile();
             else
                 System.out.println("That was not one of the choices. Try again.");    
                             
